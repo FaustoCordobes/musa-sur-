@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Musa Sur — Lencería, accesorios y maquillaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:      #f6e9ea;
+    --blush-deep: #eed7da;
+    --rose:       #c68a95;
+    --rose-deep:  #a9636f;
+    --plum:       #2a1c1f;
+    --plum-soft:  #4a3438;
+    --cream:      #fbf5f2;
+    --line:       rgba(42,28,31,0.14);
+    --radius: 2px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top: calc(76px + env(safe-area-inset-top,0px)); scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--plum);}
+  body{
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--plum);
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--rose);color:var(--cream);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,245,242,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;max-width:1180px;margin:0 auto;
+    gap:16px;
+  }
+  .logo{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.7rem;
+    letter-spacing:0.3px;
+    white-space:nowrap;
+  }
+  .logo span{color:var(--rose-deep);font-style:normal;}
+  nav.main-nav{display:flex;gap:30px;}
+  nav.main-nav a{
+    font-size:0.92rem;color:var(--plum-soft);
+    position:relative;padding-bottom:3px;
+  }
+  nav.main-nav a:hover{color:var(--rose-deep);}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+
+  .icon-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--line);background:transparent;
+    cursor:pointer;position:relative;transition:border-color .2s, background .2s;
+  }
+  .icon-btn:hover{border-color:var(--rose);background:var(--blush);}
+  .icon-btn svg{width:19px;height:19px;stroke:var(--plum);}
+  .cart-count{
+    position:absolute;top:-5px;right:-5px;
+    background:var(--rose-deep);color:var(--cream);
+    font-size:0.62rem;line-height:1;min-width:17px;height:17px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Jost',sans-serif;padding:0 2px;
+  }
+  .cart-count.hidden{display:none;}
+
+  .wa-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--plum);color:var(--cream);
+    padding:9px 18px 9px 14px;border-radius:30px;
+    font-size:0.86rem;cursor:pointer;border:1px solid var(--plum);
+    transition:background .2s, transform .15s;
+    white-space:nowrap;
+  }
+  .wa-pill:hover{background:var(--rose-deep);border-color:var(--rose-deep);transform:translateY(-1px);}
+  .wa-pill svg{width:16px;height:16px;fill:var(--cream);flex-shrink:0;}
+
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 28px 84px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 620px 420px at 82% 18%, var(--blush-deep) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 8% 90%, var(--blush) 0%, transparent 65%);
+    z-index:0;
+  }
+  .hero-inner{
+    max-width:1180px;margin:0 auto;position:relative;z-index:1;
+    display:grid;grid-template-columns: 1.1fr 0.9fr;gap:60px;align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:0.86rem;color:var(--rose-deep);
+    font-style:italic;font-family:'Cormorant Garamond',serif;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height:1.06;letter-spacing:-0.01em;
+    max-width:11ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--rose-deep);}
+  .hero p.lede{
+    margin-top:26px;max-width:44ch;
+    font-size:1.05rem;color:var(--plum-soft);
+  }
+  .hero-ctas{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--plum);color:var(--cream);
+    padding:15px 30px;border-radius:30px;font-size:0.92rem;
+    border:1px solid var(--plum);cursor:pointer;
+    transition:background .2s,transform .15s;
+  }
+  .btn-primary:hover{background:var(--rose-deep);border-color:var(--rose-deep);transform:translateY(-1px);}
+  .btn-ghost{
+    padding:15px 26px;border-radius:30px;font-size:0.92rem;
+    border:1px solid var(--plum);color:var(--plum);background:transparent;
+    cursor:pointer;transition:background .2s;
+  }
+  .btn-ghost:hover{background:var(--blush-deep);}
+
+  .hero-visual{
+    position:relative;aspect-ratio:4/5;
+    border:1px solid var(--line);
+    background:linear-gradient(155deg, var(--blush) 0%, var(--cream) 60%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-visual svg{width:58%;height:58%;}
+  .hero-visual::after{
+    content:"";position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;
+    border:1px solid var(--rose);z-index:-1;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:88px 0;}
+  .section-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:24px;margin-bottom:46px;flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,3.4vw,2.7rem);
+  }
+  .section-head p{max-width:38ch;color:var(--plum-soft);font-size:0.95rem;margin-top:8px;}
+  .section-num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--rose);font-size:1rem;
+  }
+
+  /* ---------- PRODUCT GRID ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  .card{
+    border:1px solid var(--line);
+    background:var(--cream);
+    display:flex;flex-direction:column;
+    transition:border-color .2s;
+  }
+  .card:hover{border-color:var(--rose);}
+  .card-media{
+    aspect-ratio:1/1.05;
+    background:linear-gradient(160deg, var(--blush) 0%, #fff 100%);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .card-media svg{width:44%;height:44%;stroke:var(--plum);}
+  .card-badge{
+    position:absolute;top:12px;left:12px;
+    font-size:0.66rem;letter-spacing:0.03em;color:var(--rose-deep);
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.82rem;
+  }
+  .card-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .card-body h3{font-size:1.18rem;font-weight:500;line-height:1.25;}
+  .card-body .desc{font-size:0.82rem;color:var(--plum-soft);flex:1;}
+  .card-actions{display:flex;align-items:center;gap:10px;margin-top:4px;}
+  .add-btn{
+    flex:1;padding:10px 14px;border:1px solid var(--plum);background:transparent;
+    color:var(--plum);font-family:'Jost',sans-serif;font-size:0.82rem;
+    cursor:pointer;border-radius:30px;transition:all .2s;
+  }
+  .add-btn:hover{background:var(--plum);color:var(--cream);}
+  .add-btn.added{background:var(--rose-deep);border-color:var(--rose-deep);color:var(--cream);}
+
+  .category-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.8rem;color:var(--rose-deep);margin-bottom:6px;
+  }
+  .category-tag svg{width:14px;height:14px;stroke:var(--rose-deep);}
+
+  /* ---------- ABOUT / STRIP ---------- */
+  .strip{
+    background:var(--plum);color:var(--cream);
+    padding:76px 0;
+  }
+  .strip-inner{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;
+  }
+  .strip h2{color:var(--cream);font-size:clamp(1.9rem,3vw,2.5rem);}
+  .strip p{color:#d9c7ca;font-size:0.98rem;max-width:46ch;margin-top:18px;}
+  .strip-stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap;}
+  .strip-stats div strong{
+    font-family:'Cormorant Garamond',serif;font-size:2.1rem;display:block;color:var(--rose);
+  }
+  .strip-stats div span{font-size:0.78rem;color:#c9b3b6;}
+  .strip-visual{
+    border:1px solid rgba(255,255,255,0.16);
+    aspect-ratio:16/11;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,0.03);
+  }
+  .strip-visual svg{width:46%;stroke:var(--rose);}
+
+  /* ---------- CONTACT / FOOTER CTA ---------- */
+  .contact-cta{
+    padding:96px 0;text-align:center;
+  }
+  .contact-cta h2{font-size:clamp(2.1rem,4vw,3.1rem);max-width:16ch;margin:0 auto;}
+  .contact-cta p{max-width:42ch;margin:20px auto 0;color:var(--plum-soft);}
+  .contact-cta .wa-pill{margin-top:34px;padding:16px 30px 16px 22px;font-size:0.95rem;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:50px 0 calc(36px + env(safe-area-inset-bottom,0px));
+  }
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:30px;
+  }
+  .footer-col h4{font-size:0.78rem;letter-spacing:0.02em;color:var(--rose-deep);font-weight:500;margin-bottom:14px;font-family:'Jost',sans-serif;}
+  .footer-col a, .footer-col p{font-size:0.86rem;color:var(--plum-soft);display:block;margin-bottom:8px;}
+  .footer-bottom{
+    margin-top:46px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:0.76rem;color:var(--plum-soft);
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float{
+    position:fixed;
+    bottom: calc(26px + env(safe-area-inset-bottom,0px));
+    right:26px;z-index:70;
+    width:58px;height:58px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(37,211,102,0.4);
+    cursor:pointer;border:none;
+    transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.07);}
+  .wa-float svg{width:28px;height:28px;fill:#fff;}
+
+  /* ---------- CART DRAWER ---------- */
+  .overlay{
+    position:fixed;inset:0;background:rgba(42,28,31,0.45);
+    z-index:80;opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;right:0;height:100%;width:min(400px,90vw);
+    background:var(--cream);z-index:90;
+    transform:translateX(100%);transition:transform .3s ease;
+    display:flex;flex-direction:column;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 24px;border-bottom:1px solid var(--line);
+  }
+  .drawer-head h3{font-size:1.4rem;}
+  .drawer-close{background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--plum-soft);line-height:1;}
+  .drawer-items{flex:1;overflow-y:auto;padding:10px 24px;}
+  .drawer-item{
+    display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);
+    align-items:center;
+  }
+  .drawer-item .di-icon{
+    width:52px;height:52px;background:var(--blush);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;border:1px solid var(--line);
+  }
+  .drawer-item .di-icon svg{width:60%;height:60%;stroke:var(--plum);}
+  .drawer-item .di-info{flex:1;}
+  .drawer-item .di-info h4{font-size:0.95rem;font-weight:500;margin-bottom:4px;font-family:'Jost',sans-serif;}
+  .drawer-item .di-info .di-cat{font-size:0.74rem;color:var(--rose-deep);}
+  .qty-ctrl{display:flex;align-items:center;gap:10px;}
+  .qty-ctrl button{
+    width:24px;height:24px;border:1px solid var(--line);background:none;
+    cursor:pointer;font-size:0.9rem;color:var(--plum);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .qty-ctrl button:hover{border-color:var(--rose);}
+  .remove-item{background:none;border:none;color:var(--plum-soft);font-size:0.72rem;cursor:pointer;text-decoration:underline;margin-top:6px;}
+  .drawer-empty{padding:60px 10px;text-align:center;color:var(--plum-soft);font-size:0.9rem;}
+  .drawer-empty svg{width:50px;height:50px;stroke:var(--line);margin:0 auto 16px;}
+  .drawer-foot{padding:22px 24px;border-top:1px solid var(--line);}
+  .drawer-foot p.hint{font-size:0.76rem;color:var(--plum-soft);margin-bottom:14px;}
+  .checkout-btn{
+    width:100%;background:#25D366;color:#fff;border:none;padding:15px;
+    border-radius:30px;font-family:'Jost',sans-serif;font-size:0.92rem;
+    display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+    transition:filter .2s;
+  }
+  .checkout-btn:hover{filter:brightness(0.95);}
+  .checkout-btn svg{width:18px;height:18px;fill:#fff;}
+  .checkout-btn:disabled{background:var(--line);cursor:not-allowed;}
+
+  .toast{
+    position:fixed;bottom:calc(98px + env(safe-area-inset-bottom,0px));right:26px;
+    background:var(--plum);color:var(--cream);padding:12px 20px;
+    border-radius:30px;font-size:0.82rem;z-index:95;
+    opacity:0;transform:translateY(10px);transition:opacity .25s, transform .25s;
+    pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    nav.main-nav{display:none;}
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:340px;margin:0 auto;}
+    .strip-inner{grid-template-columns:1fr;}
+    .strip-visual{order:-1;max-width:320px;margin:0 auto;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .container, .header-inner{padding-left:18px;padding-right:18px;}
+    .hero{padding:64px 18px 56px;}
+    .section{padding:60px 0;}
+    .grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+    .card-body{padding:14px;}
+    .wa-pill span.wa-text{display:none;}
+    .wa-pill{padding:10px;}
+    .footer-inner{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <a href="#inicio" class="logo">Musa<span> Sur</span></a>
+    <nav class="main-nav">
+      <a href="#ropa-interior">Ropa interior</a>
+      <a href="#accesorios">Accesorios</a>
+      <a href="#maquillaje">Maquillaje</a>
+      <a href="#nosotras">Nosotras</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cartToggle" aria-label="Ver carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count hidden" id="cartCount">0</span>
+      </button>
+      <button class="wa-pill" id="waHeaderBtn">
+        <svg viewBox="0 0 24 24"><path d="M17.6 6.3A8.8 8.8 0 0 0 3.4 16.9L2 22l5.2-1.4a8.8 8.8 0 0 0 12.4-11V6.3zM12 20.2a7.3 7.3 0 0 1-3.7-1L8 19l-3 .8.8-2.9-.2-.3a7.3 7.3 0 1 1 13.6-3.7 7.3 7.3 0 0 1-6.9 7.3zm4-5.5c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1s-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.1 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1s.2-.9.1-1z"/></svg>
+        <span class="wa-text">Consultar</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Lencería &amp; belleza — San Martín de los Andes</p>
+      <h1>Vestite de <em>vos</em> misma, todos los días.</h1>
+      <p class="lede">Conjuntos, accesorios y maquillaje elegidos a mano. Cada prenda pensada para acompañarte, con la calidez de una tienda de barrio y el mimo de lo hecho a medida.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="scrollToId('ropa-interior')">Ver colección</button>
+        <button class="btn-ghost" id="waHeroBtn">Reservar por WhatsApp</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 200 220" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 30 C 60 10, 140 10, 160 30 L 150 60 C 130 45, 70 45, 50 60 Z"/>
+        <circle cx="100" cy="34" r="7"/>
+        <path d="M55 65 C 40 100, 40 150, 60 190 C 80 205, 120 205, 140 190 C 160 150, 160 100, 145 65"/>
+        <path d="M70 100 C 90 112, 110 112, 130 100"/>
+        <path d="M65 140 C 90 150, 110 150, 135 140"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROPA INTERIOR ============ -->
+<section class="section" id="ropa-interior">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-num">Colección</span>
+        <h2>Ropa interior</h2>
+        <p>Encaje, seda y algodón peinado. Vista previa de la colección — consultá stock, talles y colores por WhatsApp.</p>
+      </div>
+    </div>
+    <div class="grid" id="grid-ropa"></div>
+  </div>
+</section>
+
+<!-- ============ ACCESORIOS ============ -->
+<section class="section" id="accesorios" style="background:var(--blush);">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-num">Colección</span>
+        <h2>Accesorios</h2>
+        <p>Los detalles que completan el conjunto: medias, batas y complementos delicados.</p>
+      </div>
+    </div>
+    <div class="grid" id="grid-accesorios"></div>
+  </div>
+</section>
+
+<!-- ============ MAQUILLAJE ============ -->
+<section class="section" id="maquillaje">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-num">Colección</span>
+        <h2>Maquillaje</h2>
+        <p>Una selección de básicos para realzar tu piel, sin esconderla.</p>
+      </div>
+    </div>
+    <div class="grid" id="grid-maquillaje"></div>
+  </div>
+</section>
+
+<!-- ============ STRIP / NOSOTRAS ============ -->
+<section class="strip" id="nosotras">
+  <div class="container strip-inner">
+    <div>
+      <h2>Una tienda pensada por y para mujeres.</h2>
+      <p>Musa Sur nació en la Patagonia con la idea de que la ropa interior no es solo una prenda: es la base de cómo te sentís con vos misma. Elegimos cada pieza pensando en comodidad, calidad y un toque de sensualidad cotidiana.</p>
+      <div class="strip-stats">
+        <div><strong>+3</strong><span>años en San Martín de los Andes</span></div>
+        <div><strong>100%</strong><span>atención personalizada</span></div>
+        <div><strong>3</strong><span>líneas: lencería, accesorios y beauty</span></div>
+      </div>
+    </div>
+    <div class="strip-visual">
+      <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.3">
+        <circle cx="60" cy="60" r="46"/>
+        <path d="M60 24 C 75 24 88 37 88 52 C 88 74 60 96 60 96 C 60 96 32 74 32 52 C 32 37 45 24 60 24 Z" transform="scale(0.55) translate(48,48)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contact-cta" id="contacto">
+  <div class="container">
+    <h2>¿Tenés una prenda en mente?</h2>
+    <p>Escribinos y te contamos disponibilidad, talles y formas de entrega. Respondemos por WhatsApp todos los días.</p>
+    <button class="wa-pill" id="waFooterBtn">
+      <svg viewBox="0 0 24 24"><path d="M17.6 6.3A8.8 8.8 0 0 0 3.4 16.9L2 22l5.2-1.4a8.8 8.8 0 0 0 12.4-11V6.3zM12 20.2a7.3 7.3 0 0 1-3.7-1L8 19l-3 .8.8-2.9-.2-.3a7.3 7.3 0 1 1 13.6-3.7 7.3 7.3 0 0 1-6.9 7.3zm4-5.5c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1s-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.1 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1s.2-.9.1-1z"/></svg>
+      <span class="wa-text">Escribir por WhatsApp</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <a href="#inicio" class="logo" style="font-size:1.4rem;">Musa<span> Sur</span></a>
+        <p style="margin-top:14px;max-width:26ch;">Lencería, accesorios y maquillaje en San Martín de los Andes.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <a href="#ropa-interior">Ropa interior</a>
+        <a href="#accesorios">Accesorios</a>
+        <a href="#maquillaje">Maquillaje</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <a href="#nosotras">Nosotras</a>
+        <a href="#" id="waFooterLink2">WhatsApp</a>
+        <a href="https://www.instagram.com/musasur_" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Musa Sur — San Martín de los Andes, Neuquén</span>
+      <span>Hecho con cariño para vos</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<button class="wa-float" id="waFloatBtn" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.6 6.3A8.8 8.8 0 0 0 3.4 16.9L2 22l5.2-1.4a8.8 8.8 0 0 0 12.4-11V6.3zM12 20.2a7.3 7.3 0 0 1-3.7-1L8 19l-3 .8.8-2.9-.2-.3a7.3 7.3 0 1 1 13.6-3.7 7.3 7.3 0 0 1-6.9 7.3zm4-5.5c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1s-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.1 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1s.2-.9.1-1z"/></svg>
+</button>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Tu selección</h3>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar">&times;</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <p class="hint">Sumá las prendas que te interesan y consultamos disponibilidad y talles directo con la tienda.</p>
+    <button class="checkout-btn" id="checkoutBtn">
+      <svg viewBox="0 0 24 24"><path d="M17.6 6.3A8.8 8.8 0 0 0 3.4 16.9L2 22l5.2-1.4a8.8 8.8 0 0 0 12.4-11V6.3zM12 20.2a7.3 7.3 0 0 1-3.7-1L8 19l-3 .8.8-2.9-.2-.3a7.3 7.3 0 1 1 13.6-3.7 7.3 7.3 0 0 1-6.9 7.3zm4-5.5c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1s-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4v-.4c0-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.1 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1s.2-.9.1-1z"/></svg>
+      Contactar con tienda para tener mi pedido
+    </button>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Agregado a tu selección</div>
+
+<script>
+(function(){
+  const WA_NUMBER = "5492972499003"; // +54 9 2972 49-9003
+
+  /* ---------------- ICONS (line-art, provisional) ---------------- */
+  const icons = {
+    bra: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 35 C 15 22 27 15 40 20 C 45 22 48 28 50 34 C 52 28 55 22 60 20 C 73 15 85 22 85 35 C 85 48 68 58 50 58 C 32 58 15 48 15 35 Z"/><circle cx="35" cy="33" r="3"/><circle cx="65" cy="33" r="3"/><path d="M15 35 C 10 40 8 50 12 58"/><path d="M85 35 C 90 40 92 50 88 58"/></svg>`,
+    panty: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 25 L80 25 C 78 45 68 55 62 65 C 58 72 55 78 50 78 C 45 78 42 72 38 65 C 32 55 22 45 20 25 Z"/><path d="M20 25 C 20 30 22 34 28 36"/><path d="M80 25 C 80 30 78 34 72 36"/></svg>`,
+    body: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M28 15 C 32 20 36 24 50 24 C 64 24 68 20 72 15"/><path d="M28 15 L24 34 C 22 44 24 52 30 58 L26 70 C 24 78 30 85 40 85 L46 68 L54 68 L60 85 C 70 85 76 78 74 70 L70 58 C 76 52 78 44 76 34 L72 15"/><path d="M40 26 C 45 30 55 30 60 26"/></svg>`,
+    bralette: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 30 C 20 42 35 48 50 48 C 65 48 80 42 88 30"/><path d="M12 30 C 12 20 22 14 32 18 C 40 21 46 30 50 38"/><path d="M88 30 C 88 20 78 14 68 18 C 60 21 54 30 50 38"/><circle cx="50" cy="41" r="2.4"/></svg>`,
+    garter: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 18 L70 18 L66 34 L34 34 Z"/><line x1="38" y1="34" x2="34" y2="60"/><line x1="62" y1="34" x2="66" y2="60"/><circle cx="34" cy="63" r="3"/><circle cx="66" cy="63" r="3"/><line x1="50" y1="34" x2="50" y2="55"/><circle cx="50" cy="58" r="3"/></svg>`,
+    blindfold: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 45 C 18 38 26 34 34 38 C 40 41 44 46 50 46 C 56 46 60 41 66 38 C 74 34 82 38 82 45 C 82 54 70 58 50 58 C 30 58 18 54 18 45 Z"/><line x1="18" y1="45" x2="4" y2="40"/><line x1="82" y1="45" x2="96" y2="40"/></svg>`,
+    robe: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M38 12 L32 88"/><path d="M62 12 L68 88"/><path d="M38 12 C 42 20 58 20 62 12"/><path d="M32 88 C 40 82 60 82 68 88"/><line x1="42" y1="30" x2="58" y2="42"/><line x1="58" y1="30" x2="42" y2="42"/></svg>`,
+    stockings: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M38 10 L34 60 C 34 72 30 80 26 88"/><path d="M62 10 L66 60 C 66 72 70 80 74 88"/><path d="M38 10 L62 10"/><line x1="38" y1="24" x2="62" y2="24"/><line x1="36" y1="40" x2="64" y2="40"/><line x1="35" y1="55" x2="65" y2="55"/></svg>`,
+    lipstick: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M42 20 L58 20 L58 42 C 58 48 50 56 50 56 C 50 56 42 48 42 42 Z"/><rect x="40" y="56" width="20" height="26" rx="2"/><line x1="40" y1="68" x2="60" y2="68"/></svg>`,
+    palette: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M50 15 C 25 15 12 32 12 50 C 12 65 22 68 30 65 C 36 63 34 55 40 55 C 48 55 46 68 56 68 C 72 68 88 60 88 42 C 88 26 72 15 50 15 Z"/><circle cx="30" cy="34" r="4"/><circle cx="50" cy="28" r="4"/><circle cx="70" cy="34" r="4"/><circle cx="76" cy="50" r="4"/></svg>`,
+    highlighter: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="35" y="30" width="30" height="55" rx="4"/><path d="M35 30 L50 12 L65 30"/><line x1="42" y1="45" x2="58" y2="45"/><line x1="42" y1="58" x2="58" y2="58"/></svg>`,
+    mascara: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="42" y="38" width="16" height="48" rx="3"/><path d="M42 38 L38 20 L62 20 L58 38"/><line x1="38" y1="20" x2="62" y2="20"/><path d="M20 55 C 30 48 40 48 46 52"/><path d="M20 62 C 30 58 40 58 46 60"/></svg>`
+  };
+
+  /* ---------------- PRODUCT DATA (provisorio, sin precio) ---------------- */
+  const products = [
+    // Ropa interior
+    { id:'ri1', cat:'ropa-interior', catLabel:'Ropa interior', name:'Conjunto Encaje Rosé', desc:'Corpiño y bombacha a juego en encaje floral.', icon:'bra' },
+    { id:'ri2', cat:'ropa-interior', catLabel:'Ropa interior', name:'Bombacha Colaless Seda', desc:'Tiro alto, tacto suave, línea invisible.', icon:'panty' },
+    { id:'ri3', cat:'ropa-interior', catLabel:'Ropa interior', name:'Bralette sin Aros', desc:'Comodidad total con textura de encaje.', icon:'bralette' },
+    { id:'ri4', cat:'ropa-interior', catLabel:'Ropa interior', name:'Body Encaje Nude', desc:'Una sola pieza, silueta envolvente.', icon:'body' },
+    // Accesorios
+    { id:'ac1', cat:'accesorios', catLabel:'Accesorios', name:'Portaligas Delicado', desc:'Detalle de encaje con broches ajustables.', icon:'garter' },
+    { id:'ac2', cat:'accesorios', catLabel:'Accesorios', name:'Antifaz de Seda', desc:'Para noches de descanso o de juego.', icon:'blindfold' },
+    { id:'ac3', cat:'accesorios', catLabel:'Accesorios', name:'Bata Corta de Encaje', desc:'Ideal para combinar con cualquier conjunto.', icon:'robe' },
+    { id:'ac4', cat:'accesorios', catLabel:'Accesorios', name:'Medias de Red', desc:'Clásicas, con costura trasera.', icon:'stockings' },
+    // Maquillaje
+    { id:'mq1', cat:'maquillaje', catLabel:'Maquillaje', name:'Labial Mate Nude Rosé', desc:'Larga duración, acabado aterciopelado.', icon:'lipstick' },
+    { id:'mq2', cat:'maquillaje', catLabel:'Maquillaje', name:'Paleta de Sombras Sunset', desc:'Tonos cálidos para de día o de noche.', icon:'palette' },
+    { id:'mq3', cat:'maquillaje', catLabel:'Maquillaje', name:'Iluminador Líquido', desc:'Brillo natural para piel radiante.', icon:'highlighter' },
+    { id:'mq4', cat:'maquillaje', catLabel:'Maquillaje', name:'Máscara de Pestañas Volumen', desc:'Curva y define sin apelmazar.', icon:'mascara' },
+  ];
+
+  const catTargets = { 'ropa-interior':'grid-ropa', 'accesorios':'grid-accesorios', 'maquillaje':'grid-maquillaje' };
+
+  products.forEach(p=>{
+    const el = document.getElementById(catTargets[p.cat]);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-media">
+        <span class="card-badge">Vista previa</span>
+        ${icons[p.icon]}
+      </div>
+      <div class="card-body">
+        <span class="category-tag">${icons.bra ? '' : ''}${p.catLabel}</span>
+        <h3>${p.name}</h3>
+        <p class="desc">${p.desc}</p>
+        <div class="card-actions">
+          <button class="add-btn" data-id="${p.id}">Agregar a mi selección</button>
+        </div>
+      </div>`;
+    el.appendChild(card);
+  });
+
+  /* ---------------- CART STATE ---------------- */
+  let cart = {};
+  try{
+    const saved = localStorage.getItem('musasur_cart');
+    if(saved) cart = JSON.parse(saved);
+  }catch(e){ cart = {}; }
+
+  function saveCart(){
+    try{ localStorage.setItem('musasur_cart', JSON.stringify(cart)); }catch(e){}
+  }
+
+  function cartCountTotal(){
+    return Object.values(cart).reduce((a,b)=>a+b.qty,0);
+  }
+
+  function renderCartIcon(){
+    const count = cartCountTotal();
+    const badge = document.getElementById('cartCount');
+    if(count > 0){
+      badge.textContent = count;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  function renderDrawer(){
+    const wrap = document.getElementById('drawerItems');
+    const ids = Object.keys(cart);
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if(ids.length === 0){
+      wrap.innerHTML = `<div class="drawer-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Todavía no agregaste ninguna prenda.<br>Explorá la colección y sumá lo que te guste.
+      </div>`;
+      checkoutBtn.disabled = true;
+      renderCartIcon();
+      return;
+    }
+    checkoutBtn.disabled = false;
+    wrap.innerHTML = ids.map(id=>{
+      const item = cart[id];
+      const p = products.find(pp=>pp.id===id);
+      return `<div class="drawer-item" data-id="${id}">
+        <div class="di-icon">${icons[p.icon]}</div>
+        <div class="di-info">
+          <h4>${p.name}</h4>
+          <div class="di-cat">${p.catLabel}</div>
+          <div class="qty-ctrl">
+            <button class="qty-minus" data-id="${id}">–</button>
+            <span>${item.qty}</span>
+            <button class="qty-plus" data-id="${id}">+</button>
+          </div>
+          <button class="remove-item" data-id="${id}">Quitar</button>
+        </div>
+      </div>`;
+    }).join('');
+    renderCartIcon();
+
+    wrap.querySelectorAll('.qty-plus').forEach(b=>b.addEventListener('click', e=>{
+      const id = e.currentTarget.dataset.id;
+      cart[id].qty++; saveCart(); renderDrawer();
+    }));
+    wrap.querySelectorAll('.qty-minus').forEach(b=>b.addEventListener('click', e=>{
+      const id = e.currentTarget.dataset.id;
+      cart[id].qty--; if(cart[id].qty<=0) delete cart[id];
+      saveCart(); renderDrawer();
+    }));
+    wrap.querySelectorAll('.remove-item').forEach(b=>b.addEventListener('click', e=>{
+      const id = e.currentTarget.dataset.id;
+      delete cart[id]; saveCart(); renderDrawer();
+    }));
+  }
+
+  function addToCart(id, btn){
+    const p = products.find(pp=>pp.id===id);
+    if(!cart[id]) cart[id] = { qty:0 };
+    cart[id].qty++;
+    saveCart();
+    renderCartIcon();
+    showToast(`${p.name} agregada a tu selección`);
+    if(btn){
+      btn.classList.add('added');
+      const original = btn.textContent;
+      btn.textContent = 'Agregado ✓';
+      setTimeout(()=>{ btn.classList.remove('added'); btn.textContent = original; }, 1400);
+    }
+  }
+
+  document.querySelectorAll('.add-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> addToCart(btn.dataset.id, btn));
+  });
+
+  /* ---------------- TOAST ---------------- */
+  let toastTimer;
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
+  }
+
+  /* ---------------- DRAWER OPEN/CLOSE ---------------- */
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  function openDrawer(){
+    renderDrawer();
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+  document.getElementById('cartToggle').addEventListener('click', openDrawer);
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  /* ---------------- WHATSAPP LINKS ---------------- */
+  function openWA(text){
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
+
+  const GENERIC_MSG = 'Hola, buenas tardes! Vi tu página web y quería consultarte sobre ';
+
+  ['waHeaderBtn','waHeroBtn','waFooterBtn','waFloatBtn','waFooterLink2'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        openWA(GENERIC_MSG);
+      });
+    }
+  });
+
+  document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+    const ids = Object.keys(cart);
+    if(ids.length === 0) return;
+    let msg = 'Hola, buenas tardes! Quería consultar disponibilidad de stock, talles y colores de estas prendas:\n\n';
+    ids.forEach(id=>{
+      const item = cart[id];
+      const p = products.find(pp=>pp.id===id);
+      msg += `• ${p.name} (${p.catLabel}) x${item.qty}\n`;
+    });
+    msg += '\n¿Me confirmás si tenés disponible? Gracias!';
+    openWA(msg);
+  });
+
+  /* ---------------- UTIL ---------------- */
+  window.scrollToId = function(id){
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  };
+
+  renderCartIcon();
+})();
+</script>
+</body>
+</html>
